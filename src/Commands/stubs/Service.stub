@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\{{ ModuleNameSingular }};
+
+
+class {{ ModuleNameSingular }}Service
+{
+    protected ${{ ModuleNameSingularLow }};
+
+    public function __construct(
+        {{ ModuleNameSingular }} ${{ ModuleNameSingularLow }}
+    ){
+        $this->{{ ModuleNameLow }} = ${{ ModuleNameSingularLow }};
+    }
+
+    public function getItems()
+    {
+        return $this->{{ ModuleNameLow }}->paginate(16);
+    }
+
+
+    public function findById($id)
+    {
+        return $this->{{ ModuleNameLow }}->find($id);
+    }
+
+
+    public function create($data)
+    {
+        return $this->{{ ModuleNameLow }}->create($data);
+    }
+
+
+}

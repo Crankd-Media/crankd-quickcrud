@@ -1,0 +1,10 @@
+
+/*
+|----------------------------------------------
+| {{ ModuleName }}
+|----------------------------------------------
+|
+*/
+use App\Http\Controllers\{{ ModuleNameSingular }}Controller;
+Route::resource('{{ ModuleNameLow }}', {{ ModuleNameSingular }}Controller::class);
+

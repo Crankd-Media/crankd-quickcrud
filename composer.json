@@ -1,0 +1,12 @@
+{
+    "name": "Crankd/Quickcrud",
+    "description": "This demo package will do some calculations",
+    "authors": [
+        {
+            "name": "Nathaniel Meyer",
+            "email": "nat@crankd.nz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

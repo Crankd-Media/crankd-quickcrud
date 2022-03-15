@@ -1,0 +1,52 @@
+<x-app-layout>
+
+    <x-slot name="header">
+        <div class="grid grid-cols-2 gap-6 justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-0">
+                {{ ModuleName }} List
+            </h2>
+            <div class="text-right">
+                <a href="{{ route('{{ ModuleNameLow }}.create') }}" class="py-2 px-6 bg-gray-800 text-white hover:bg-gray-600">Create {{ ModuleNameSingular }}</a>
+            </div>
+        </div>
+    </x-slot>
+
+    <section class="{{ ModuleNameLow }}-index py-16">
+        <div class="mx-auto max-w-4xl">
+
+            <div class="shadow border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name
+                            </th>
+                        </tr>
+                    </thead>
+                    @if(${{ ModuleNameLow }}->count())
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach(${{ ModuleNameLow }} as ${{ ModuleNameSingularLow }})
+                        <tr
+                            class="cursor-pointer hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="{{ route('{{ ModuleNameLow }}.show', ${{ ModuleNameSingularLow }}->id) }}">
+                                    {{ ${{ ModuleNameSingularLow }}->name }}
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+
+                    </tbody>
+                    @endif
+                </table>
+            </div>
+
+            <div class="py-4">
+                {{ ${{ ModuleNameLow }}->links() }}
+            </div>
+
+        </div>
+    </section>
+
+</x-app-layout>

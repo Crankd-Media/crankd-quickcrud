@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+use App\Models\{{ ModuleNameSingular }};
+use App\Services\{{ ModuleNameSingular }}Service;
+use App\Http\Requests\{{ ModuleName }}\{{ ModuleNameSingular }}StoreRequest;
+use App\Http\Requests\{{ ModuleName }}\{{ ModuleNameSingular }}UpdateRequest;
+
+class {{ ModuleNameSingular }}Controller extends Controller
+{
+    protected ${{ ModuleNameSingularLow }}Service;
+
+    public function __construct({{ ModuleNameSingular }}Service ${{ ModuleNameSingularLow }}Service)
+    {
+        $this->{{ ModuleNameSingularLow }}Service = ${{ ModuleNameSingularLow }}Service;
+    }
+
+
+    public function index()
+    {
+        // ${{ ModuleNameLow }} = $this->{{ ModuleNameSingularLow }}Service->getItems();
+        ${{ ModuleNameLow }} = {{ ModuleNameSingular }}::orderBy('created_at', 'desc')->paginate(16);
+
+        $compact = [
+            '{{ ModuleNameLow }}'
+        ];
+        return view('{{ ModuleName }}/index', compact($compact));
+    }
+
+
+    public function create()
+    {
+        $compact = [];
+        return view('{{ ModuleName }}/create', compact($compact));
+    }
+
+
+    public function store({{ ModuleNameSingular }}StoreRequest $request)
+    {
+        ${{ ModuleNameSingularLow }} = $this->{{ ModuleNameSingularLow }}Service->create($request->validated());
+        return redirect()->route('{{ ModuleNameLow }}.index')->with('success', '{{ ModuleNameSingular }} updated successfully!');
+    }
+
+
+    public function show({{ ModuleNameSingular }} ${{ ModuleNameSingularLow }})
+    {
+        $compact = [
+            '{{ ModuleNameSingularLow }}',
+        ];
+        return view('{{ ModuleName }}/show', compact($compact));
+    }
+
+
+    public function edit({{ ModuleNameSingular }} ${{ ModuleNameSingularLow }})
+    {
+        $compact = [
+            '{{ ModuleNameSingularLow }}',
+        ];
+        return view('{{ ModuleName }}/edit', compact($compact));
+    }
+
+
+    public function update({{ ModuleNameSingular }}UpdateRequest $request, {{ ModuleNameSingular }} ${{ ModuleNameSingularLow }})
+    {
+        ${{ ModuleNameSingularLow }}->update($request->validated());
+        return redirect()->route('{{ ModuleNameLow }}.index')->with('success', '{{ ModuleName }} updated successfully!');
+    }
+
+
+
+    public function destroy({{ ModuleNameSingular }} ${{ ModuleNameSingularLow }})
+    {
+        ${{ ModuleNameSingularLow }}->delete();
+        return redirect()->route('{{ ModuleNameLow }}.index');
+    }
+}

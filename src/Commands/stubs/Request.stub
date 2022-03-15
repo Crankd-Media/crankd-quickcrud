@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Requests\{{ ModuleName }};
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
+
+class {{ ModuleNameSingular }}{{ RequestName }} extends FormRequest
+{
+    /**
+     * Determine if the {{ ModuleNameLow }} is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+        // return Gate::allows('{{ ModuleNameLow }}_access');
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name'      => [ 'string', 'required' ],
+        ];
+    }
+}

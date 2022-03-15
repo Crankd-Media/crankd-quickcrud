@@ -1,0 +1,5 @@
+<?php
+
+Route::get('quick-crud', 'Crankd\Quickcrud\QuickcrudController@create')->name('quickcrud.create');
+
+Route::post('quick-crud/store', 'Crankd\Quickcrud\QuickcrudController@store')->name('quickcrud.store');

@@ -1,0 +1,19 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\{{ ModuleNameSingular }};
+
+class {{ ModuleName }}TableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        {{ ModuleNameSingular }}::create(['name' => "{{ ModuleNameSingular }} Name"]);
+    }
+}

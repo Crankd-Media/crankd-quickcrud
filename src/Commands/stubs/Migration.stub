@@ -1,0 +1,3 @@
+            $table->string('name');
+            $table->softDeletes();
+            $table->timestamps();
