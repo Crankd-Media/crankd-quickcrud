@@ -1,6 +1,6 @@
 {
     "name": "crankd/quickcrud",
-    "description": "This demo package will do some calculations",
+    "description": "This will create a basic crud example",
     "authors": [
         {
             "name": "Nathaniel Meyer",
