@@ -1,6 +1,9 @@
 ## Setup
 
 ```bash
+
+composer require crankd/quickcrud
+
 composer install
 
 composer dump-autoload

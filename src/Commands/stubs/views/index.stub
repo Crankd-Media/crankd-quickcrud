@@ -26,7 +26,7 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach(${{ ModuleNameLow }} as ${{ ModuleNameSingularLow }})
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="whitespace-nowrap">
                                 <a href="{{ route('{{ ModuleNameLow }}.show', ${{ ModuleNameSingularLow }}->id) }}" class="block px-6 py-4 hover:bg-gray-50">
                                     {{ ${{ ModuleNameSingularLow }}->name }}
                                 </a>
