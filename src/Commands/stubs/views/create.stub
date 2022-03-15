@@ -1,5 +1,4 @@
-<x-app-layout>
-
+<x-guest-layout>
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-0">
@@ -10,6 +9,18 @@
 
     <section class="{{ ModuleNameLow }}-create py-16">
         <div class="mx-auto max-w-4xl">
+
+            <div class="grid grid-cols-2 gap-6 justify-between items-center mb-8">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-0">
+                    Create {{ ModuleName }}
+                </h2>
+                <div class="text-right">
+
+                </div>
+            </div>
+
+
+
 
             <form action="{{ route('{{ ModuleNameLow }}.store') }}" method="POST">
                 @csrf
@@ -30,5 +41,4 @@
     </section>
 
 
-
-</x-app-layout>
+</x-guest-layout>

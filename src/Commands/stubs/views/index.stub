@@ -1,18 +1,16 @@
-<x-app-layout>
-
-    <x-slot name="header">
-        <div class="grid grid-cols-2 gap-6 justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-0">
-                {{ ModuleName }} List
-            </h2>
-            <div class="text-right">
-                <a href="{{ route('{{ ModuleNameLow }}.create') }}" class="py-2 px-6 bg-gray-800 text-white hover:bg-gray-600">Create {{ ModuleNameSingular }}</a>
-            </div>
-        </div>
-    </x-slot>
+<x-guest-layout>
 
     <section class="{{ ModuleNameLow }}-index py-16">
         <div class="mx-auto max-w-4xl">
+
+            <div class="grid grid-cols-2 gap-6 justify-between items-center mb-8">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-0">
+                    {{ ModuleName }} List
+                </h2>
+                <div class="text-right">
+                    <a href="{{ route('{{ ModuleNameLow }}.create') }}" class="py-2 px-6 bg-gray-800 text-white hover:bg-gray-600">Create {{ ModuleNameSingular }}</a>
+                </div>
+            </div>
 
             <div class="shadow border-b border-gray-200 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
@@ -27,10 +25,9 @@
                     @if(${{ ModuleNameLow }}->count())
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach(${{ ModuleNameLow }} as ${{ ModuleNameSingularLow }})
-                        <tr
-                            class="cursor-pointer hover:bg-gray-50">
+                        <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="{{ route('{{ ModuleNameLow }}.show', ${{ ModuleNameSingularLow }}->id) }}">
+                                <a href="{{ route('{{ ModuleNameLow }}.show', ${{ ModuleNameSingularLow }}->id) }}" class="block px-6 py-4 hover:bg-gray-50">
                                     {{ ${{ ModuleNameSingularLow }}->name }}
                                 </a>
                             </td>
@@ -49,4 +46,4 @@
         </div>
     </section>
 
-</x-app-layout>
+</x-guest-layout>

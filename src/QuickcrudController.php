@@ -4,6 +4,7 @@ namespace Crankd\Quickcrud;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 
 class QuickcrudController extends Controller
 {
@@ -20,11 +21,17 @@ class QuickcrudController extends Controller
         $name = $request->name;
         $moduleNameLow = strtolower($name);
         Artisan::call('make:module ' . $name);
-        // sleep(10);
         $route = $moduleNameLow . '.index';
-        while (route($route) == true) {
-            return redirect()->route($route)->with('success', $name . ' created successfully!');
+        sleep(3);
+        return redirect()->route('quickcrud.redirect', $route);
+    }
+
+    public function redirect($route)
+    {
+        if (Route::has($route)) {
+            return redirect()->route($route)->with('success', 'Created successfully!');
         }
+        header("Refresh:0");
     }
 
 }

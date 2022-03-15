@@ -53,12 +53,12 @@ class ModuleCommand extends Command
         $moduleNameSingular = Str::singular($moduleName);
         $moduleNameSingularLow = strtolower($moduleNameSingular);
 
+        $this->makeRoutes($moduleName);
         $this->makeModel($moduleName, $moduleNameSingular);
         $this->makeController($moduleName, $moduleNameSingular);
         $this->makeService($moduleName, $moduleNameSingular);
         $this->makeRequests($moduleName, $moduleNameSingular);
         $this->makeViews($moduleName, $ModuleNameLow, $moduleNameSingular);
-        $this->makeRoutes($moduleName);
 
         return $ModuleNameLow;
     }
@@ -232,8 +232,13 @@ class ModuleCommand extends Command
         $fileContents = $this->formatStubs($moduleName, $fileContents);
         $filePath = base_path() . '/routes/web.php';
         $written = File::append($filePath, $fileContents);
-        $message = ($written) ? 'Created Views in resources/views/' . $moduleName : "Something went wrong";
+
+        Artisan::call('route:cache');
+        Artisan::call('route:clear');
+
+        $message = ($written) ? 'Created Route in web.php' . $moduleName : "Something went wrong";
         $this->info($message);
+
     }
 
 }
