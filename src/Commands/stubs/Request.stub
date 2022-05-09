@@ -29,4 +29,14 @@ class {{ ModuleNameSingular }}{{ RequestName }} extends FormRequest
             'name'      => [ 'string', 'required' ],
         ];
     }
+
+
+    public function prepareForValidation()
+    {
+        // $this->merge([
+            // 'boolean' => $this->boolean('field_name'),
+        // ]);
+    }
+
+
 }
